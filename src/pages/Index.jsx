@@ -63,7 +63,17 @@ const Index = () => {
         {selectedProject ? (
           <OrderedList>
             {selectedProject.edits
-              .sort((a, b) => b.created - a.created)
+              .sort((a, b) => {
+                if (a.created && b.created) {
+                  return b.created - a.created;
+                } else if (a.created) {
+                  return -1;
+                } else if (b.created) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              })
               .map((edit, index) => (
                 <ListItem key={index}>
                   <Text>
