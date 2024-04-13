@@ -59,7 +59,7 @@ const Index = () => {
         </Heading>
         {selectedProject && data[selectedProject] ? (
           <OrderedList>
-            {data[selectedProject]
+            {Object.values(data[selectedProject])
               .sort((a, b) => b.created - a.created)
               .map((edit, index) => (
                 <ListItem key={index}>
