@@ -73,6 +73,19 @@ const Index = () => {
                     <strong>Status:</strong> {edit.status}
                   </Text>
                   <Divider my={2} />
+                  {edit.code_blocks && edit.code_blocks.length > 0 ? (
+                    <>
+                      <Heading size="sm">Code Blocks</Heading>
+                      {edit.code_blocks.map((block, i) => (
+                        <Box key={i} p={2} bg="gray.100" borderRadius="md">
+                          <pre>{block}</pre>
+                        </Box>
+                      ))}
+                    </>
+                  ) : (
+                    <Text>No code blocks available for this edit</Text>
+                  )}
+                  <Divider my={4} />
                 </ListItem>
               ))}
           </OrderedList>
