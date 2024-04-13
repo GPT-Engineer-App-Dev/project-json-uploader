@@ -16,7 +16,10 @@ const Index = () => {
   };
 
   const handleProjectClick = (projectId) => {
-    setSelectedProject(projectId);
+    setSelectedProject({
+      id: projectId,
+      edits: Object.values(data[projectId]),
+    });
   };
 
   const handleClearData = () => {
@@ -57,9 +60,9 @@ const Index = () => {
         <Heading size="lg" mb={4}>
           Edits
         </Heading>
-        {selectedProject && data[selectedProject] ? (
+        {selectedProject ? (
           <OrderedList>
-            {data[selectedProject]
+            {selectedProject.edits
               .sort((a, b) => b.created - a.created)
               .map((edit, index) => (
                 <ListItem key={index}>
