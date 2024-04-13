@@ -64,11 +64,11 @@ const Index = () => {
           <OrderedList>
             {selectedProject.edits
               .sort((a, b) => {
-                if (a.created && b.created) {
-                  return b.created - a.created;
-                } else if (a.created) {
+                if (a.created_at && a.created_at.__time__ && b.created_at && b.created_at.__time__) {
+                  return b.created_at.__time__ - a.created_at.__time__;
+                } else if (a.created_at && a.created_at.__time__) {
                   return -1;
-                } else if (b.created) {
+                } else if (b.created_at && b.created_at.__time__) {
                   return 1;
                 } else {
                   return 0;
